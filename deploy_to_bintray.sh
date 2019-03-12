@@ -3,6 +3,10 @@ USER=nioshd
 CHANNEL=testing
 REMOTE=origin
 
+# generate a default profile with c++11 abi
+conan profile new --detect default
+conan profile update settings.compiler.libcxx=libstdc++11 default
+
 # inspect the recipe to determine the name and version
 NAME=$(conan inspect . -a name | sed -e "s/^name: //")
 VERSION=$(conan inspect . -a version | sed -e "s/^version: //")
