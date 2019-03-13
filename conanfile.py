@@ -15,7 +15,8 @@ class DtcConan(ConanFile):
     }
 
     def build(self):
-        self.run("make install NO_PYTHON=1 PREFIX='{}'".format(self.package_folder))
+        self.run("make install NO_PYTHON=1 CC='{}' PREFIX='{}'".format(self.settings.compiler,
+                                                                       self.package_folder))
 
     def package_info(self):
         # make built applications usable by appending the bin directory to PATH
